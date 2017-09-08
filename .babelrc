@@ -1,0 +1,24 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": ["> 1%"] // list of browsers to support
+        }
+      }
+    ]
+  ],
+  "plugins": ["syntax-dynamic-import"], // for import statements
+  "env": {
+    "karma": {
+      "plugins": [
+        [
+          "istanbul",
+          { "exclude": ["tests/*.test.js"] }
+        ]
+      ]
+    }
+  }
+}
