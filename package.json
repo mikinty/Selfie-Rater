@@ -57,6 +57,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "react": "^15.6.1"
+    "react": "^15.6.1",
+    "yarn": "^1.0.0"
   }
 }
