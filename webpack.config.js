@@ -129,12 +129,11 @@ module.exports = (env) => {
       chunks: ['main', 'manifest', 'vendor'],
     }),
     parts.page({
-      title: 'another',
-      path: 'another',
       entry: {
-        another: path.join(PATHS.src, 'another.js'),
+        main: path.join(PATHS.src, 'js'),
       },
-      chunks: ['another', 'manifest', 'vendor'],
+      chunks: ['main', 'manifest', 'vendor'],
+      template: 'src/index.html',
     }),
   ];
 
