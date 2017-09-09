@@ -8,8 +8,8 @@ require('./listeners');
 require('tracking/build/data/face-min');
 
 const RATING_EXPIRY = 3000;
-const BACKEND_URL = 'http://18.220.71.37/rateme';
-const DETECTION_COLOR = '#a64ceb';
+const BACKEND_URL = 'http://52.14.139.51/rateme';
+const DETECTION_COLOR = '#FFDD1F';
 
 const camera = $('.camera');
 
@@ -22,8 +22,9 @@ function animateBorder (rating, animate) {
   ];
 
   camera.css('border', `3px solid rgb(${color[0]}, ${color[1]}, ${color[2]})`);
+
   if (animate) {
-    camera.addClass('pulse');
+    // camera.addClass('pulse');
   } else {
     camera.removeClass('pulse');
   }
@@ -58,6 +59,8 @@ faceTracker.setEdgesDensity(0.1);
 
 const canvas = document.getElementById('face');
 const context = canvas.getContext('2d');
+const rating = $("#ratingNum");
+console.log(rating);
 
 let last_face_ts = 0;
 
@@ -69,8 +72,10 @@ faceTracker.on('track', function(event) {
   if (event.data.length === 0) {
     if (Date.now() - last_face_ts > RATING_EXPIRY) {
       // Reset rating
-      document.getElementById('ratingNum').innerHTML = '--';
-      animateBorder(0.5, false);
+      if (!rating.hasClass('freeze')) {
+        rating.text('--');
+        animateBorder(0.5, false);
+      }
     }
   }
   // Face(s) found
@@ -90,12 +95,14 @@ faceTracker.on('track', function(event) {
         contentType: 'application/json',
         dataType: 'json',
       }).done((response) => {
-        var rating = response.rating.toFixed(2);
+        console.log(response);
+        var newRating = response.rating.toFixed(2);
 
         // update rating number UI
-        document.getElementById('ratingNum').innerHTML = rating;
-
-        animateBorder(response.rating, true);        
+        if (!rating.hasClass('freeze')) {
+          rating.text(newRating);
+          animateBorder(response.rating, true);
+        }
       });
 
       // Draw face detection
