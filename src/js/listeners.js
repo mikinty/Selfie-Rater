@@ -8,7 +8,7 @@ const download = $('.download');
 
 var context = canvas.getContext('2d');
 
-snapButton.on('click', () => {
+const takeSnapshot = () => {
   // flash animation
   flash.addClass('click');
   setTimeout(() => {
@@ -26,7 +26,33 @@ snapButton.on('click', () => {
   const dY = 80;
   context.drawImage(video, dX, 0, canvas.width + dX - 20, canvas.height + dY, 0, 0, canvas.width, canvas.height);
   dlink.attr('href', canvas.toDataURL('image/png'));
-});
+};
+
+let holdTimeoutId = 0;
+let heldDown = false;
+snapButton
+  .mousedown(() => {
+    console.log('Down...');
+
+    // To be called in the future if no mouseup in time
+    holdTimeoutId = setTimeout(() => {
+      console.log('Held down!');
+      heldDown = true;
+    }, 500);
+  })
+  .mouseup(() => {
+    console.log('...Up');
+
+    // Cancels any hold down callback
+    clearTimeout(holdTimeoutId);
+
+    // Only execute if not held down
+    if (!heldDown) {
+      console.log('Not held down!');
+      takeSnapshot();
+    }
+    heldDown = false;
+  });
 
 // redo button
 redo.on('click', () => {
