@@ -24,7 +24,7 @@ function animateBorder (rating, animate) {
   camera.css('border', `3px solid rgb(${color[0]}, ${color[1]}, ${color[2]})`);
 
   if (animate) {
-    camera.addClass('pulse');
+    // camera.addClass('pulse');
   } else {
     camera.removeClass('pulse');
   }
