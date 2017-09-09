@@ -72,6 +72,7 @@ faceTracker.on('track', function(event) {
         dataType: 'json',
       }).done((response) => {
         // Update UI
+        console.log(response);
         document.getElementById('ratingNum').innerHTML = response.rating.toFixed(2);
       });
 
