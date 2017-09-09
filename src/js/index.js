@@ -11,7 +11,7 @@ const RATING_EXPIRY = 3000;
 const BACKEND_URL = 'http://18.220.71.37/rateme';
 const DETECTION_COLOR = '#a64ceb';
 
-tracking.ObjectTracker.prototype.track = function(pixels, width, height) {
+tracking.ObjectTracker.prototype.track = function (pixels, width, height) {
   var self = this;
   var classifiers = this.getClassifiers();
 
@@ -86,4 +86,4 @@ faceTracker.on('track', function(event) {
   }
 });
 
-const faceTask = tracking.track('#myVideo', faceTracker, {camera: true});
+tracking.track('#myVideo', faceTracker, {camera: true});
