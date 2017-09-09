@@ -5,9 +5,9 @@
   background: linear-gradient($mainColor, $mainColorLight);
 
   .camera {
-    background: white;
-    height: 400px;
-    width: 330px; 
+    // position: relative;
+    height: $cameraHeight;
+    width: $cameraWidth; 
     margin: 0 auto 0 auto;
     display: flex;
     justify-content: center;
@@ -16,7 +16,7 @@
     // styling
     border-radius: 8px;
     overflow: hidden; // make the camera appear to be vertical
-    border: 3px solid #0CEB83;
+    border: $borderThickness solid #0CEB83;
   }
 
   .flash {
@@ -49,4 +49,14 @@
       opacity: 0;
     }
   }
+}
+
+.canvas {
+  height: $cameraHeight - 5px;
+  width: $cameraWidth - 5px;
+  position: absolute;
+  margin: 0 auto 0 auto;
+  left: 0;
+  right: 0;
+  top: $headerHeight + $borderThickness + 2px;
 }
