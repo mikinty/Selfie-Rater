@@ -9,6 +9,7 @@ require('tracking/build/data/face-min');
 
 const RATING_EXPIRY = 3000;
 const BACKEND_URL = 'http://18.220.71.37/rateme';
+const DETECTION_COLOR = '#a64ceb';
 
 tracking.ObjectTracker.prototype.track = function(pixels, width, height) {
   var self = this;
@@ -58,8 +59,6 @@ faceTracker.on('track', function(event) {
     last_face_ts = Date.now();
 
     event.data.forEach((rect) => {
-      console.log(event);
-
       // Send for scoring
       $.ajax({
         url: BACKEND_URL,
@@ -77,7 +76,7 @@ faceTracker.on('track', function(event) {
       });
 
       // Draw face detection
-      context.strokeStyle = '#a64ceb';
+      context.strokeStyle = DETECTION_COLOR;
       context.strokeRect(rect.x, rect.y, rect.width, rect.height);
       context.font = '11px Helvetica';
       context.fillStyle = '#fff';
