@@ -1,6 +1,9 @@
 const snapButton = $('.snap');
-
+const flash = $('.flash');
 
 snapButton.on('click', () => {
-  console.log('snap');
+  flash.addClass('click');
+  setTimeout(() => {
+    flash.removeClass('click');
+  }, 200);
 });
