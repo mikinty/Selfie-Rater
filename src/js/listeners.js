@@ -59,7 +59,6 @@ const snapBest = () => {
       highestRating = currRating;
       bestSnap = snapCurrentFrame(true); // hidden canvas
     }
-
     snapBest();
   }, 100);
 };
@@ -72,13 +71,14 @@ snapButton
     holdTimeoutId = setTimeout(() => {
       // canvas appears while button is held down
       hCanvas.style.display = 'block'; 
+      snapWrapper.addClass('pressed');
       heldDown = true;
       snapBest();
     }, 500);
   })
   .mouseup(() => {
     hCanvas.style.display = 'none';
-
+    snapWrapper.removeClass('pressed');
     // Only execute if not held down
     if (!heldDown) {
       // Cancels any hold down callback
