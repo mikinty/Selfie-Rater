@@ -86,7 +86,13 @@ snapButton
     // End of holding down
     else {
       clearTimeout(bestSnapId);
+      rating.text(highestRating);
       console.log(highestRating);
+
+      // Draw best snap onto the main canvas
+      const img = new Image();
+      img.onload = () => context.drawImage(img, 0, 0);
+      img.src = bestSnap;
 
       // animation
       snapButton.addClass('inactive');
