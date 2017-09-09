@@ -1,3 +1,4 @@
+const snapWrapper = $('.snap-wrapper');
 const snapButton = $('.snap');
 const flash = $('.flash');
 const canvas = $('.canvas')[0]; // the actual canvas DOM element
