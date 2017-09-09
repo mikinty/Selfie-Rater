@@ -1,6 +1,9 @@
 // import stylesheets
 require('../css/main.scss');
 
+// button listeners
+require('./listeners');
+
 /* global tracking */
 
 const SelfieTracker = () => {
@@ -23,7 +26,7 @@ const selfieTracker = new SelfieTracker();
 
 selfieTracker.on('track', function(event) {
   // Update scores in UI
-  console.log(event);
+  // console.log(event);
 });
 
 tracking.track('#myVideo', selfieTracker, {camera: true});
