@@ -15,10 +15,18 @@ tracking.inherits(SelfieTracker, tracking.Tracker);
 // Per frame processing
 SelfieTracker.prototype.track = function(pixel, width, height) {
   // ML scoring here
-
-  this.emit('track', {
-    // stuff to be passed as 'event'
-    data: [1, 2, 3], // Arbitrary for now
+  $.ajax({
+    url: 'http://18.220.71.37/rateme',
+    type: 'POST',
+    data: JSON.stringify({
+      pixels: Array.from(pixel),
+      width: width,
+      height: height,
+    }),
+    contentType: 'application/json',
+    dataType: 'json',
+  }).done((response) => {
+    this.emit('track', response);
   });
 };
 
@@ -29,4 +37,5 @@ selfieTracker.on('track', function(event) {
   // console.log(event);
 });
 
-tracking.track('#myVideo', selfieTracker, {camera: true});
+const trackerTask = tracking.track('#myVideo', selfieTracker, {camera: true});
+setTimeout(() => trackerTask.stop(), 10000);
