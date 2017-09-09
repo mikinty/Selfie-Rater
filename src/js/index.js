@@ -7,6 +7,10 @@ require('./listeners');
 /* global tracking */
 require('tracking/build/data/face-min');
 
+const RATING_EXPIRY = 3000;
+const BACKEND_URL = 'http://18.220.71.37/rateme';
+const DETECTION_COLOR = '#a64ceb';
+
 tracking.ObjectTracker.prototype.track = function(pixels, width, height) {
   var self = this;
   var classifiers = this.getClassifiers();
@@ -37,40 +41,49 @@ faceTracker.setEdgesDensity(0.1);
 const canvas = document.getElementById('face');
 const context = canvas.getContext('2d');
 
+let last_face_ts = 0;
+
 faceTracker.on('track', function(event) {
+  // Clear rectangles
   context.clearRect(0, 0, canvas.width, canvas.height);
-  event.data.forEach((rect) => {
-    console.log(event);
 
-    // Send for scoring
-    $.ajax({
-      url: 'http://18.220.71.37/rateme',
-      type: 'POST',
-      data: JSON.stringify({
-        pixels: Array.from(event.pixels),
-        width: event.width,
-        height: event.height,
-      }),
-      contentType: 'application/json',
-      dataType: 'json',
-    }).done((response) => {
-      // Update UI
-      console.log(response);
-      document.getElementById("ratingNum").innerHTML = response.rating;
+  // No face(s) found
+  if (event.data.length === 0) {
+    if (Date.now() - last_face_ts > RATING_EXPIRY) {
+      // Reset rating
+      document.getElementById('ratingNum').innerHTML = '--';
+    }
+  }
+  // Face(s) found
+  else {
+    last_face_ts = Date.now();
+
+    event.data.forEach((rect) => {
+      // Send for scoring
+      $.ajax({
+        url: BACKEND_URL,
+        type: 'POST',
+        data: JSON.stringify({
+          pixels: Array.from(event.pixels),
+          width: event.width,
+          height: event.height,
+        }),
+        contentType: 'application/json',
+        dataType: 'json',
+      }).done((response) => {
+        // Update UI
+        document.getElementById('ratingNum').innerHTML = response.rating.toFixed(2);
+      });
+
+      // Draw face detection
+      context.strokeStyle = DETECTION_COLOR;
+      context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+      context.font = '11px Helvetica';
+      context.fillStyle = '#fff';
+      context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
+      context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
     });
-
-    // Draw face detection
-    context.strokeStyle = '#a64ceb';
-    context.strokeRect(rect.x, rect.y, rect.width, rect.height);
-    context.font = '11px Helvetica';
-    context.fillStyle = '#fff';
-    context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
-    context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
-  });
+  }
 });
 
 const faceTask = tracking.track('#myVideo', faceTracker, {camera: true});
-setTimeout(() => {
-  faceTask.stop();
-  console.log('Stopped task!');
-}, 30000);
