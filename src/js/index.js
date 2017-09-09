@@ -56,6 +56,7 @@ faceTracker.on('track', function(event) {
     }).done((response) => {
       // Update UI
       console.log(response);
+      document.getElementById("ratingNum").innerHTML = response.rating;
     });
 
     // Draw face detection
@@ -71,5 +72,5 @@ faceTracker.on('track', function(event) {
 const faceTask = tracking.track('#myVideo', faceTracker, {camera: true});
 setTimeout(() => {
   faceTask.stop();
-  console.log("Stopped task!");
+  console.log('Stopped task!');
 }, 30000);
