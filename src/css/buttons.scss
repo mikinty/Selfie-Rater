@@ -21,22 +21,21 @@
     .snap {
       width: $cameraWidth;
       min-height: $cameraSize + 15px;
-      background: $snapColor;
+      background-color: $snapColor;
 
       // background image settings
       background-image: url('../images/camera.png');
       background-size: $cameraSize;
       background-repeat: no-repeat;
       background-position: center;
+      transition-duration: 0.6s;
 
       &:hover{
-        background: #FFE76E;
-        
-        // background image settings
-        background-image: url('../images/camera.png');
-        background-size: $cameraSize;
-        background-repeat: no-repeat;
-        background-position: center;
+        background-color: #FFE76E;
+      }
+
+      &.inactive {
+        transform: translateY(-40px);
       }
     }
 
@@ -48,18 +47,38 @@
 
       .redo {
         width: 50%;
+        background-color: #30E039;
         background-image: url('../images/redo.png');
         background-size: $cameraSize;
         background-repeat: no-repeat;
         background-position: center;
+        transition-duration: 0.6s;
+
+        &.active {
+          transform: translateY(-40px);
+        }
+
+        &:hover {
+          background-color: #45EC48;
+        }
       }
 
-      .download-wrapper {
+      .download {
         width: 50%;
-        background-image: url('../images/download.png');
-        background-size: $cameraSize;
+        background-color: #24CCFF;
+        background-image: url('../images/download2.png');
+        background-size: 20px;
         background-repeat: no-repeat;
         background-position: center;
+        transition-duration: 0.6s;        
+
+        &.active {
+          transform: translateY(-40px);
+        }
+
+        &:hover {
+          background-color: #3AD4FF;
+        }
       }
     }
   } 
