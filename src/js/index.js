@@ -11,7 +11,7 @@ const RATING_EXPIRY = 3000;
 const BACKEND_URL = 'http://18.220.71.37/rateme';
 const DETECTION_COLOR = '#a64ceb';
 
-tracking.ObjectTracker.prototype.track = function(pixels, width, height) {
+tracking.ObjectTracker.prototype.track = function (pixels, width, height) {
   var self = this;
   var classifiers = this.getClassifiers();
 
@@ -46,6 +46,25 @@ let last_face_ts = 0;
 faceTracker.on('track', function(event) {
   // Clear rectangles
   context.clearRect(0, 0, canvas.width, canvas.height);
+  event.data.forEach((rect) => {
+    console.log(event);
+
+    // Send for scoring
+    $.ajax({
+      url: 'http://18.220.71.37/rateme',
+      type: 'POST',
+      data: JSON.stringify({
+        pixels: Array.from(event.pixels),
+        width: event.width,
+        height: event.height,
+      }),
+      contentType: 'application/json',
+      dataType: 'json',
+    }).done((response) => {
+      // Update UI
+      console.log(response);
+      document.getElementById('ratingNum').innerHTML = response.rating;
+    });
 
   // No face(s) found
   if (event.data.length === 0) {

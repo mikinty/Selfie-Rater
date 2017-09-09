@@ -17,6 +17,5 @@ snapButton.on('click', () => {
   const dX = 110;
   const dY = 80;
   context.drawImage(video, dX, 0, canvas.width + dX - 20, canvas.height + dY, 0, 0, canvas.width, canvas.height);
-  var a = canvas.toDataURL('image/png');
-  dlink.attr('href', a);
+  dlink.attr('href', canvas.toDataURL('image/png'));
 });
