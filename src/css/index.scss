@@ -9,6 +9,7 @@ body {
 
   .bottom {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin-top: 20px;
   }

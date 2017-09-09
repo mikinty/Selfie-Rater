@@ -12,6 +12,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    // styling
+    border-radius: 5px;
     overflow: hidden; // make the camera appear to be vertical
   }
 }
