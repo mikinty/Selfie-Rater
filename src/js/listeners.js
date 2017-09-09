@@ -3,6 +3,8 @@ const flash = $('.flash');
 const canvas = $('.canvas')[0];
 const dlink = $('.download');
 const video = $('#myVideo')[0];
+const redo = $('.redo');
+const download = $('.download');
 
 snapButton.on('click', () => {
   // flash animation
@@ -10,6 +12,11 @@ snapButton.on('click', () => {
   setTimeout(() => {
     flash.removeClass('click');
   }, 200);
+
+  // animation
+  snapButton.addClass('inactive');
+  redo.addClass('active');
+  download.addClass('active');
 
   // download photo
   console.log(video.width, video.height, canvas.width, canvas.height);
