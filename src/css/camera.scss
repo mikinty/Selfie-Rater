@@ -4,11 +4,11 @@ $borderWidth: 3px;
 $borderDelta: 3px;
 
 .middle {
+  position: relative;
   width: 100%;
-  background: linear-gradient($mainColor, $mainColorLight);
 
   .camera {
-    // position: relative;
+    position: relative;
     height: $cameraHeight;
     width: $cameraWidth;
     margin: 0 auto 0 auto;
@@ -35,6 +35,8 @@ $borderDelta: 3px;
       }
       30% {
         border-width: $borderWidth;
+        margin-top: 0px;
+        margin-bottom: 0px;
       }
       50% {
         border-width: $borderWidth;
@@ -50,10 +52,16 @@ $borderDelta: 3px;
         border-width: $borderWidth;
       }
     }
+
+    video {
+      position: absolute;
+      z-index: 1;
+    }
   }
 
   #face {
     position: absolute;
+    z-index: 4;
   }
 
   .flash {
@@ -63,6 +71,7 @@ $borderDelta: 3px;
     width: $cameraWidth; 
     border-radius: 5px;
     opacity: 0;
+    z-index: 10;
 
     &.click {
       animation: cameraFlash 0.4s;
@@ -93,6 +102,17 @@ $borderDelta: 3px;
   margin: 0 auto 0 auto;
   left: 0;
   right: 0;
-  top: $headerHeight + $borderThickness;
+  top: $borderThickness;
+  border-radius: 5px;
+  z-index: 5;
+}
+
+.hidden-canvas {
+  position: absolute;
+  z-index: 2;
+  bottom: -117px;
+  left: 111px;
+  display: block;
+  transform: scale(0.4);
   border-radius: 5px;
 }

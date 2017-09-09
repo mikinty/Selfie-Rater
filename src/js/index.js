@@ -9,7 +9,7 @@ require('tracking/build/data/face-min');
 
 const RATING_EXPIRY = 3000;
 const BACKEND_URL = 'http://52.14.139.51/rateme';
-const DETECTION_COLOR = '#a64ceb';
+const DETECTION_COLOR = '#FFDD1F';
 
 const camera = $('.camera');
 
@@ -22,6 +22,7 @@ function animateBorder (rating, animate) {
   ];
 
   camera.css('border', `3px solid rgb(${color[0]}, ${color[1]}, ${color[2]})`);
+
   if (animate) {
     camera.addClass('pulse');
   } else {
