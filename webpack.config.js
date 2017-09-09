@@ -131,7 +131,7 @@ module.exports = (env) => {
     }),
     parts.page({
       entry: {
-        main: path.join(PATHS.src, 'js'),
+        main: path.join(PATHS.src, 'js', 'index.js'),
       },
       chunks: ['main', 'manifest', 'vendor'],
       template: 'src/index.html',
