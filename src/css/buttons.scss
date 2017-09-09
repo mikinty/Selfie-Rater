@@ -4,31 +4,63 @@
   margin-top: 10px;
 
   .snap-wrapper {
-    width: $cameraSize + 15px;
+    width: $cameraWidth;
     height: $cameraSize + 15px;
-    background: $snapColor;
-    border-radius: 50%;
+    border-radius: 5px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
+    overflow: hidden;
+
     cursor: pointer;
 
     // animation things
     transition-duration: 0.5s;
 
-    &:hover{
-      background: #FFE76E
-    }
-
     .snap {
-      width: $cameraSize;
-      height: $cameraSize;
+      width: $cameraWidth;
+      min-height: $cameraSize + 15px;
+      background: $snapColor;
 
       // background image settings
       background-image: url('../images/camera.png');
       background-size: $cameraSize;
       background-repeat: no-repeat;
       background-position: center;
+
+      &:hover{
+        background: #FFE76E;
+        
+        // background image settings
+        background-image: url('../images/camera.png');
+        background-size: $cameraSize;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+
+    .util {
+      width: $cameraWidth;
+      min-height: $cameraSize + 15px;
+      display: flex;
+      flex-direction: row;
+
+      .redo {
+        width: 50%;
+        background-image: url('../images/redo.png');
+        background-size: $cameraSize;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .download-wrapper {
+        width: 50%;
+        background-image: url('../images/download.png');
+        background-size: $cameraSize;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
     }
   } 
 }
