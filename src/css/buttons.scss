@@ -1,8 +1,34 @@
 .buttons {
   display: flex;
   justify-content: center;
+  margin-top: 10px;
 
-  .snap {
-    background: url('../images/camera.png');
-  }
+  .snap-wrapper {
+    width: $cameraSize + 15px;
+    height: $cameraSize + 15px;
+    background: $snapColor;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    // animation things
+    transition-duration: 0.5s;
+
+    &:hover{
+      background: #FFE76E
+    }
+
+    .snap {
+      width: $cameraSize;
+      height: $cameraSize;
+
+      // background image settings
+      background-image: url('../images/camera.png');
+      background-size: $cameraSize;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  } 
 }
