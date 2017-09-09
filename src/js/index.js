@@ -1,3 +1,6 @@
+// import stylesheets
+require('../css/main.scss');
+
 /* global tracking */
 
 const SelfieTracker = () => {

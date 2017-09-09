@@ -1,8 +1,11 @@
-body {
-  background: #4FC13F;
-  display: flex;
-}
+// variables for all 
+@import 'variables';
 
-.redButton {
-  background: #E08B72;
-}
+// fonts
+@import 'fonts';
+
+// stylesheets
+@import 'index';
+@import 'header';
+@import 'camera';
+@import 'buttons';
