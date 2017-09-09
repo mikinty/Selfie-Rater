@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "deploy": "gh-pages -d build",
-    "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\"",
+    "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development --host 0.0.0.0\"",
     "build": "webpack --env production",
     "lint": "eslint src/ webpack.*.js --cache",
     "stats": "webpack --env production --profile --json > stats.json",

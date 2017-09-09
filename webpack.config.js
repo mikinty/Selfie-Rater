@@ -109,8 +109,8 @@ const developmentConfig = merge([
   parts.generateSourceMaps({ type: 'cheap-module-eval-source-map' }),
   parts.devServer({
     // customize host/port here if necessary
-    host: process.env.HOST,
-    port: process.env.PORT,
+    host: '0.0.0.0', // process.env.HOST,
+    port: 8080, // process.env.PORT,
   }),
   parts.loadCSS(),
   parts.loadImages(),  

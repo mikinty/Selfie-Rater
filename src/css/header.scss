@@ -1,16 +1,17 @@
 .header {
   background: $mainColor;
+  height: 40px;
   width: 100%;
   display: flex;
   justify-content: center;
 
-  .title {
+  .stats {
     display: flex;
-    height: $headerHeight;
+    justify-content: center;
     align-items: center;
 
     span {
-      font-size: 48px;
+      font-size: 24px;
     }
   }
 }

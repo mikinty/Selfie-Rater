@@ -11,6 +11,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
     historyApiFallback: true,
+    https: true,
     stats: 'errors-only',
     host, // Defaults to `localhost`
     port, // Defaults to 8080
