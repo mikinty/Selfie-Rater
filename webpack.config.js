@@ -23,6 +23,7 @@ const commonConfig = merge([
     plugins: [
       new webpack.ProvidePlugin({
         $: 'jquery',
+        tracking: 'tracking',
       }),
     ],
   },
