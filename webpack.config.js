@@ -2,8 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
 
-const glob = require('glob');
-
 // webpack parts file
 const parts = require('./webpack.parts');
 
@@ -90,10 +88,6 @@ const productionConfig = merge([
   parts.generateSourceMaps({ type: 'source-map' }),  
   parts.extractCSS({
     use: ['css-loader', parts.autoprefix(), 'sass-loader'],
-  }),
-  // needs to run AFTER extract text plugin
-  parts.purifyCSS({
-    paths: glob.sync(`${PATHS.src}/**/*.js`, { nodir: true }),
   }),
   // load images
   parts.loadImages({

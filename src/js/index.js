@@ -9,7 +9,26 @@ require('tracking/build/data/face-min');
 
 const RATING_EXPIRY = 3000;
 const BACKEND_URL = 'http://52.14.139.51/rateme';
-const DETECTION_COLOR = '#a64ceb';
+const DETECTION_COLOR = '#FFDD1F';
+
+const camera = $('.camera');
+
+function animateBorder (rating, animate) {
+  // border color
+  var color = [
+    Math.round(244 - 179 * rating),
+    Math.round(65 + 179 * rating),
+    60,
+  ];
+
+  camera.css('border', `3px solid rgb(${color[0]}, ${color[1]}, ${color[2]})`);
+
+  if (animate) {
+    // camera.addClass('pulse');
+  } else {
+    camera.removeClass('pulse');
+  }
+}
 
 tracking.ObjectTracker.prototype.track = function (pixels, width, height) {
   var self = this;
@@ -52,6 +71,7 @@ faceTracker.on('track', function(event) {
     if (Date.now() - last_face_ts > RATING_EXPIRY) {
       // Reset rating
       document.getElementById('ratingNum').innerHTML = '--';
+      animateBorder(0.5, false);
     }
   }
   // Face(s) found
@@ -71,9 +91,12 @@ faceTracker.on('track', function(event) {
         contentType: 'application/json',
         dataType: 'json',
       }).done((response) => {
-        // Update UI
-        console.log(response);
-        document.getElementById('ratingNum').innerHTML = response.rating.toFixed(2);
+        var rating = response.rating.toFixed(2);
+
+        // update rating number UI
+        document.getElementById('ratingNum').innerHTML = rating;
+
+        animateBorder(response.rating, true);
       });
 
       // Draw face detection
@@ -81,8 +104,6 @@ faceTracker.on('track', function(event) {
       context.strokeRect(rect.x, rect.y, rect.width, rect.height);
       context.font = '11px Helvetica';
       context.fillStyle = '#fff';
-      context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
-      context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
     });
   }
 });

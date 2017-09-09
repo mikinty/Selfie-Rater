@@ -54,7 +54,7 @@ const snapBest = () => {
     console.log(currRating, highestRating);
     if (currRating > highestRating) {
       highestRating = currRating;
-      bestSnap = snapCurrentFrame();
+      bestSnap = snapCurrentFrame(true); // hidden canvas
     }
 
     snapBest();
@@ -70,6 +70,8 @@ snapButton
     // To be called in the future if no mouseup in time
     holdTimeoutId = setTimeout(() => {
       console.log('Held down!');
+      // canvas appears while button is held down
+      hCanvas.style.display = 'block'; 
       heldDown = true;
       snapBest();
     }, 500);

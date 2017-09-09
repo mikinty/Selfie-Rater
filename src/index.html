@@ -6,9 +6,11 @@
   </head>
   <body>
     <div class='header'>
-      <div class='title'>
-          <span>Selfie Rater</span>
-      </div>
+      <div class='stats'>
+          <div class='rating'>
+            <span>Rating: <span id='ratingNum'>--</span></span>
+          </div>
+        </div>
     </div>
     <div class='middle'>
         <canvas class='hidden-canvas' height='400' width='340'></canvas>
@@ -17,24 +19,20 @@
             <canvas id='face' width='533.33' height='400'></canvas>
             <div class='flash'></div>
         </div>
+        <canvas class='hidden-canvas' height='400' width='340'></canvas>        
         <canvas class='canvas' height='400' width='340'></canvas>
     </div>
     <div class='bottom'>
-      <div class='stats'>
-        <div class='rating'>
-          <span>Rating: <span id='ratingNum'>--</span></span>
-        </div>
-      </div>
+      
       <div class='buttons'>
         <div class='snap-wrapper'>
             <div class='snap'></div>
             <div class='util'>
               <div class='redo'></div>
-              <a class='download' download='selfie.png'>
-               
-              <div class='download-wrapper'>
-                
-              </div> </a>
+              <a class='download' download='selfie.png'>  
+                <div class='download-wrapper'>
+                </div> 
+              </a>
             </div>
         </div>
       </div>

@@ -1,16 +1,8 @@
 .header {
-  background: $mainColor;
   width: 100%;
   display: flex;
   justify-content: center;
-
-  .title {
-    display: flex;
-    height: $headerHeight;
-    align-items: center;
-
-    span {
-      font-size: 48px;
-    }
-  }
+  height: $headerHeight;
+  align-items: center;
+  margin-top: 20px;
 }
