@@ -22,8 +22,8 @@
   .flash {
     position: absolute;
     background: white;
-    height: 400px;
-    width: 330px; 
+    height: $cameraHeight;
+    width: $cameraWidth; 
     border-radius: 5px;
     opacity: 0;
 
@@ -52,11 +52,9 @@
 }
 
 .canvas {
-  height: $cameraHeight - 5px;
-  width: $cameraWidth - 5px;
   position: absolute;
   margin: 0 auto 0 auto;
   left: 0;
   right: 0;
-  top: $headerHeight + $borderThickness + 2px;
+  top: $headerHeight + $borderThickness;
 }
