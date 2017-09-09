@@ -8,7 +8,7 @@ require('./listeners');
 require('tracking/build/data/face-min');
 
 const RATING_EXPIRY = 3000;
-const BACKEND_URL = 'http://18.220.71.37/rateme';
+const BACKEND_URL = 'http://52.14.139.51/rateme';
 const DETECTION_COLOR = '#a64ceb';
 
 tracking.ObjectTracker.prototype.track = function (pixels, width, height) {

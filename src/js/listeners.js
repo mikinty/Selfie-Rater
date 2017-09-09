@@ -90,6 +90,14 @@ snapButton
       console.log('Held down end!');
       clearTimeout(bestSnapId);
       console.log(highestRating);
+
+      // animation
+      snapButton.addClass('inactive');
+      redo.addClass('active');
+      download.addClass('active');
+
+      // download photo
+      dlink.attr('href', bestSnap);
     }
     heldDown = false;
   });
