@@ -22,9 +22,6 @@ snapButton.on('click', () => {
 
   // download photo
   console.log(video.width, video.height, canvas.width, canvas.height);
-  const dX = 110;
-  const dY = 80;
-  context.drawImage(video, dX, 0, canvas.width + dX - 20, canvas.height + dY, 0, 0, canvas.width, canvas.height);
   dlink.attr('href', canvas.toDataURL('image/png'));
 });
 
@@ -37,3 +34,14 @@ redo.on('click', () => {
   redo.removeClass('active');
   download.removeClass('active');
 });
+
+function videoLoop () {
+  const dX = 110;
+  const dY = 80;
+  context.drawImage(video, dX, 0, canvas.width + dX - 20, canvas.height + dY, 0, 0, canvas.width, canvas.height);
+  context.drawImage(video, dX, 0, canvas.width + dX - 20, canvas.height + dY, 0, 0, canvas.width, canvas.height);  
+  setTimeout(videoLoop, 1000 / 24);
+}
+
+// start canvas
+videoLoop();
