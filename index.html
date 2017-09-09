@@ -3,10 +3,34 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <title>Selfie Rater</title>
-  </head>
+  <link href="main.97bb8ba4.css" rel="stylesheet"></head>
   <body>
-    <div class='header'></div>
-    <div class='camera'></div>
-    <div class='buttons'></div>
-  <script type="text/javascript" src="manifest.2a10df53.js"></script><script type="text/javascript" src="vendor.83cd64e3.js"></script><script type="text/javascript" src="main.dacb3fa7.js"></script></body>
+    <div class='header'>
+      <div class='title'>
+          <span>Selfie Rater</span>
+      </div>
+    </div>
+    <div class='middle'>
+        <div class='camera'>
+            <video id="myVideo" height='400' preload autoplay loop muted></video>
+            <div class='flash'></div>
+        </div>
+        <canvas class='canvas' height='400' width='340'></canvas>
+    </div>
+    <div class='bottom'>
+      <div class='stats'>
+        <div class='rating'>
+          <span>Rating: <span id='ratingNum'></span>%</span>
+        </div>
+      </div>
+      <div class='buttons'>
+        <div class='snap-wrapper'>
+            <div class='snap'></div>
+        </div>
+        <a class='download' download='selfie.png'>
+          Download! :)
+        </a>
+      </div>
+    </div>
+  <script type="text/javascript" src="manifest.f1d554cf.js"></script><script type="text/javascript" src="vendor.01951d0a.js"></script><script type="text/javascript" src="main.0cf5d657.js"></script></body>
 </html>
