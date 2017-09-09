@@ -102,7 +102,7 @@ $borderDelta: 3px;
   margin: 0 auto 0 auto;
   left: 0;
   right: 0;
-  top: $borderThickness;
+  top: $borderThickness - 2px;
   border-radius: 5px;
   z-index: 5;
 }
