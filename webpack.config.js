@@ -24,6 +24,9 @@ const commonConfig = merge([
       new webpack.ProvidePlugin({
         $: 'jquery',
       }),
+      new webpack.ProvidePlugin({
+        tracking: 'tracking',
+      }),
     ],
   },
   parts.loadFonts({
