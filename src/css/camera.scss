@@ -1,5 +1,8 @@
 // div for the actual camera
 
+$borderWidth: 3px;
+$borderDelta: 3px;
+
 .middle {
   width: 100%;
   background: linear-gradient($mainColor, $mainColorLight);
@@ -7,16 +10,46 @@
   .camera {
     // position: relative;
     height: $cameraHeight;
-    width: $cameraWidth; 
+    width: $cameraWidth;
     margin: 0 auto 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition-duration: 0.5s;
 
     // styling
     border-radius: 8px;
     overflow: hidden; // make the camera appear to be vertical
-    border: $borderThickness solid #0CEB83;
+    border: $borderThickness solid #B0EB0C;
+
+    &.pulse {
+      animation-name: pulse_animation;
+      animation-duration: 500ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    @keyframes pulse_animation {
+      0% {
+        border-width: $borderWidth;
+      }
+      30% {
+        border-width: $borderWidth;
+      }
+      50% {
+        border-width: $borderWidth;
+        margin-top: -$borderDelta;
+        margin-bottom: -$borderDelta;
+      }
+      60% {
+        border-width: $borderWidth;
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+      100% {
+        border-width: $borderWidth;
+      }
+    }
   }
 
   #face {
@@ -61,4 +94,5 @@
   left: 0;
   right: 0;
   top: $headerHeight + $borderThickness;
+  border-radius: 5px;
 }
