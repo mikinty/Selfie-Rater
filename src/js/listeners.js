@@ -79,7 +79,7 @@ snapButton
   .mouseup(() => {
     console.log('...Up');
 
-    // hCanvas.style.display = 'none';
+    hCanvas.style.display = 'none';
 
     // Only execute if not held down
     if (!heldDown) {
