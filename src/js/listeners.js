@@ -46,7 +46,7 @@ const snapSingle = () => {
   dlink.attr('href', snapCurrentFrame());
 };
 
-let highestRating = -1;
+let highestRating = 0;
 let bestSnap = '';
 let bestSnapId = 0;
 
