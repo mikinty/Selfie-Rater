@@ -59,6 +59,8 @@ faceTracker.setEdgesDensity(0.1);
 
 const canvas = document.getElementById('face');
 const context = canvas.getContext('2d');
+const rating = $("#ratingNum");
+console.log(rating);
 
 let last_face_ts = 0;
 
@@ -70,8 +72,10 @@ faceTracker.on('track', function(event) {
   if (event.data.length === 0) {
     if (Date.now() - last_face_ts > RATING_EXPIRY) {
       // Reset rating
-      document.getElementById('ratingNum').innerHTML = '--';
-      animateBorder(0.5, false);
+      if (!rating.hasClass('freeze')) {
+        rating.text('--');
+        animateBorder(0.5, false);
+      }
     }
   }
   // Face(s) found
@@ -92,12 +96,13 @@ faceTracker.on('track', function(event) {
         dataType: 'json',
       }).done((response) => {
         console.log(response);
-        var rating = response.rating.toFixed(2);
+        var newRating = response.rating.toFixed(2);
 
         // update rating number UI
-        document.getElementById('ratingNum').innerHTML = rating;
-
-        animateBorder(response.rating, true);
+        if (!rating.hasClass('freeze')) {
+          rating.text(newRating);
+          animateBorder(response.rating, true);
+        }
       });
 
       // Draw face detection

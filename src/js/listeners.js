@@ -34,6 +34,8 @@ const snapSingle = () => {
     flash.removeClass('click');
   }, 200);
 
+  rating.addClass('freeze');
+
   // animation
   snapButton.addClass('inactive');
   redo.addClass('active');
@@ -94,6 +96,8 @@ snapButton
       img.onload = () => context.drawImage(img, 0, 0);
       img.src = bestSnap;
 
+      rating.addClass('freeze');
+
       // animation
       snapButton.addClass('inactive');
       redo.addClass('active');
@@ -108,6 +112,8 @@ snapButton
 // redo button
 redo.on('click', () => {
   context.clearRect(0, 0, canvas.width, canvas.height);
+
+  rating.removeClass('freeze');
 
   // animation
   snapButton.removeClass('inactive');
