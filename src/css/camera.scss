@@ -1,0 +1,12 @@
+// div for the actual camera
+
+.middle {
+  width: 100%;
+  background: linear-gradient($mainColor, $mainColorLight);
+  .camera {
+    background: white;
+    height: 500px;
+    width: 350px; 
+    margin: 30px auto 0 auto;
+  }
+}

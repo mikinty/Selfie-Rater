@@ -1,5 +1,16 @@
 .header {
-  span {
-    font-size: 48px;
+  background: $mainColor;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .title {
+    display: flex;
+    height: 70px;
+    align-items: center;
+
+    span {
+      font-size: 48px;
+    }
   }
 }
