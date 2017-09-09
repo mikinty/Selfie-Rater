@@ -91,10 +91,6 @@ const productionConfig = merge([
   parts.extractCSS({
     use: ['css-loader', parts.autoprefix(), 'sass-loader'],
   }),
-  // needs to run AFTER extract text plugin
-  parts.purifyCSS({
-    paths: glob.sync(`${PATHS.src}/**/*.js`, { nodir: true }),
-  }),
   // load images
   parts.loadImages({
     options: {
