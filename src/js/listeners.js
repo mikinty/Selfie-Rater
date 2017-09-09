@@ -52,7 +52,7 @@ const snapBest = () => {
   bestSnapId = setTimeout(() => {
     const currRating = parseFloat(rating.text());
     console.log(currRating, highestRating);
-    if (currRating > highestRating) {
+    if (currRating >= highestRating) {
       highestRating = currRating;
       bestSnap = snapCurrentFrame(true); // hidden canvas
     }
@@ -65,11 +65,8 @@ let holdTimeoutId = 0;
 let heldDown = false;
 snapButton
   .mousedown(() => {
-    console.log('Down...');
-
     // To be called in the future if no mouseup in time
     holdTimeoutId = setTimeout(() => {
-      console.log('Held down!');
       // canvas appears while button is held down
       hCanvas.style.display = 'block'; 
       heldDown = true;
@@ -77,19 +74,17 @@ snapButton
     }, 500);
   })
   .mouseup(() => {
-    console.log('...Up');
+    hCanvas.style.display = 'none';
 
     // Only execute if not held down
     if (!heldDown) {
       // Cancels any hold down callback
       clearTimeout(holdTimeoutId);
 
-      console.log('Not held down!');
       snapSingle();
     }
     // End of holding down
     else {
-      console.log('Held down end!');
       clearTimeout(bestSnapId);
       console.log(highestRating);
 

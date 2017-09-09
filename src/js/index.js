@@ -91,6 +91,7 @@ faceTracker.on('track', function(event) {
         contentType: 'application/json',
         dataType: 'json',
       }).done((response) => {
+        console.log(response);
         var rating = response.rating.toFixed(2);
 
         // update rating number UI
